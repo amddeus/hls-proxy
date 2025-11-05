@@ -51,7 +51,7 @@
 		// "localhost" only this one is allowed
 		// "8.8.8.8, 8.8.4.4,localhost" allows by specific addresses or domains
 		"address": "",
-		"port": 80,
+		"port": 8202,
 		"password": "",
 		"secret": "",
 		// Allow connections only from these ips/masks
