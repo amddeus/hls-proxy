@@ -1,0 +1,449 @@
+{
+	// An array of objects. Note, that all channels will be merged into one playlist
+	"playlists": [
+		{
+			// A name of playlist to show in log
+			"name": "IPTV",
+			// A type of uri. Could be 'link' or 'file'
+			"type": "link",
+			// A path to playlist.
+			"uri": "",
+			// Cached local copy of a playlist. Used on second run when a playlist was downloaded before
+			"localCopy": "./iptv.m3u8",
+			"isUseLocalAceStreamMediaProxy": true,
+			"aceStreamMediaProxyURL": "http://127.0.0.1:6878",
+			"useLogos": true,
+			"flussonicType": "index",
+			"isEnabled": true,
+			"nameReplacer": [
+			],
+			"remotePath": "",
+			"ffmpegCommand": ""
+		}
+//	    ,
+//		{
+//			"name": "editablePlaylist",
+//			"type": "editable",
+//			"uri": "./editable.m3u8",
+//			"localCopy": "",
+//			"isUseLocalAceStreamMediaProxy": true,
+//			"aceStreamMediaProxyURL": "http://10.0.0.1:6878",
+//			"useLogos": true,
+//			"isEnabled": true
+//		}
+//		 ,
+//		 {
+//		 	name: 'Custom',
+//		 	type: 'file',
+//		 	uri: './custom.m3u',
+//			"useLogos": true,
+//		 }
+	],
+	// Sets an url where HLS-proxy will be available
+	// 0.0.0.0 is value for autodetect. Any available local ip (starting with 10.* or 192.168.*) will be accessible
+	// Loopback interfaces are not supported by autodetection. Proxy will ignore addresses starting with 127.*
+	// Root page / is a playlist url for players. For browsers it shows a HTML rich page with channels and EPG
+	// address property can be a domain
+	"SERVER": {
+		"protocol": "http",
+		// Empty allows all local interfaces
+		// "0.0.0.0" Allows an access by any address
+		// "localhost" only this one is allowed
+		// "8.8.8.8, 8.8.4.4,localhost" allows by specific addresses or domains
+		"address": "",
+		"port": 80,
+		"password": "",
+		"secret": "",
+		// Allow connections only from these ips/masks
+		"whitelist": "",
+		// Allow connections to admin UI only from these ips/masks
+		"whitelistForAdmin": "",
+		"key": "",
+		"cert": "",
+		"isAllowUsersWithAnyToken": false,
+		"loginPagePath": "",
+		"isRestreamer": false
+	},
+	"epg": {
+		 //An URLs of EPG sources.
+		// You can open several sources at once.
+		// Just remember - a comma has to be at the end of every string except the last one
+		"tvGuideUrl": [
+//			"http://www.teleguide.info/download/new3/xmltv.xml.gz",
+//			"http://epg.do.am/tv.gz",
+			"disabled:https://iptvx.one/epg/epg.xml.gz"
+		],
+		// How many passed days to keep an EPG. 4 means to keep up to 4 days ago
+		"historyDays": 4,
+		// Local cache of built EPG
+		"filename": "./epg.xml.gz",
+		 // Update at 8 and 23:00 every day
+		"updateAt": "0 0 8,23 * * *",
+		// If true - do nothing.
+		// If false - change a begining of a program which starts at 00:00:00 to 00:00:01. For LazyIPTV set false
+		"isProgramStartTimeCanBeAtMidnight": true,
+		// Directory where proxy keeps a cache of EPG. Can be cleared safely at the moment when proxy doesn't download EPG.
+		"cacheDir": "./epg-cache",
+		// true enables channel mapping between playlist and epg by channel name. Covers more than 95% of available channels.
+		// Sets own tvg-id in playlist
+		"isEpgMatchEnabled": true,
+		// Optionally a user can configure his own url for clients to fetch epg
+		// By default epg is available at /epg
+		"epgUrlForClient": "/epg.xml.gz",
+		"isAddUrlEpgToEXTINF": false,
+		// Allow matching epg by shortening channel name - more matches but less accurate
+		"isAllowWeakMatch": true,
+		// If set true, it will not keep a guide for channels which do not exist in the inner channels DB
+		"isKeepDbMatchedOnlyChannels": false,
+		// two-character language code which is preferred as main epg languaged
+		"preferLang": ""
+	},
+	"FAVORITES": {
+		"groupName": "Favorites",
+		"isShowOnlyInFavorites": false,
+		"list": [
+		]
+	},
+	// Used for storing recorded streams
+	"RECORDING": {
+		"storeDir": "./recording",
+		"topDirDateFormat": "YYYY-MM-DD",
+		"timeFormat":"HHːmmːss",
+		"isEnabled": true,
+		"recordingUrlPath": "/recordings.m3u8"
+	},
+	// the key is interpretated as ip when SERVER.password is not set
+	// otherwise as username
+	"clients": {
+//		When admin password is not set
+//		"10.0.0.2": {
+//			"name": "Test client",
+//			"password": "test",
+//			"isAdultAllowed": true
+//		},
+//		When admin password is set
+//		"user1": {
+//			"name": "Test client",
+//			"password": "test",
+//			"isAdultAllowed": true
+//		}
+	},
+	"bitly": {
+		"token": ""
+	},
+	"maxSimultaneousStreamCountPerClientDefault": 1,
+	// User can configure his own playlist url
+	"playlistPath": "/playlist.m3u8",
+	// If true - playlistPath url is available to access by any domain even external.
+	// Useful for OTTPlayer, SS IPTV etc
+	"isPlaylistAvailableFromOutside": false,
+	// If epg does not recognize time shift correctly and set it inversed - just try to play with that
+	// For lazyIPTV set is true, for PVR Simple IPTV Client - false
+	"inverseEpgTimeShift": false,
+	// Allows to use a channel name for time shift
+	// In case of channel name "Discovery Channel (+2)" then tvg-shift="-2" will be applied to the channel.
+	//	Default: true from version 5.7.0
+	// If you use lazyIPTV - set it true
+	"isDetectEPGTimeShiftFromChannelName": true,
+	// A directory for stream caching when isCacheInMemory set to false
+	"CACHE_DIR": "./cache",
+	// When set to true, proxy keeps streams in the RAM, when it is false - CACHE_DIR used for storing stream files
+	"isCacheInMemory": true,
+	// Useragent string is used to fetch playlists
+	"userAgent": "VLC/3.0.17 LibVLC/3.0.17",
+	// Use this user agent for a stream fetch. If empty - client userAgent will be used
+	"useUserAgent": "",
+	// Time multiplier between requests for remote HLS playlist
+	// Default - wait x1.5 of chunk time
+	"fetchIntervalMultiplier": 1.5,
+	// How many video chunks to cache locally
+	"chunksToCache": 10,
+	// How many chunks from start to hide from a client
+	"safeChunkSeq": 4,
+	// How many chunks are visible to client to fetch
+	"chunksForClient": 10,
+	// How many chunks to fill before it will be available for client on start.
+	// Also used for new client connection to begin
+	"fastStartChunks": 2,
+	// When playlist is short - less than 4 chunks, it increases "fastStartChunks" to this value
+	"fastStartChunksWhenPlaylistIsShort": 4,
+	// Period in ms. If no request from client during this period, then server stops fetching
+	"streamTimeout": 100000,
+	// How many requests to perform for the same chunk before retire
+	"getTsChunkRetries": 2,
+	// if http error 403 is occured - use this value instead of "getTsChunkRetries"
+	"retriesForError403": 1,
+	// Try to retry if http error 404 is occured. Default false
+	"isCatch404": true,
+	// if http error 404 is occured - use this value instead of "getTsChunkRetries"
+	"retriesForError404": 1,
+	// if http error 404 is occured - use this value instead of "delayBeforeRetryIfFailed"
+	"delayForError404": 5000,
+	// How many requests to perform for the same chunk before retire
+	"getPlaylistRetries": 3,
+	// Stall timeout for request. If during this period no data received - request is aborted
+	"httpResponseStallTimeout": 5000,
+	// Each time when stall timeout occurs, multiply a timeout value by this and add a result to previous timeout
+	// httpResponseStallTimeout[i + 1] = httpResponseStallTimeout[i] + httpResponseStallTimeout[i] * increaseStallTimeoutInCaseOfFailureMultiplier
+	"increaseStallTimeoutInCaseOfFailureMultiplier": 0,
+	// Until this period expired a download speed is not measured and request may not be aborted.
+	"minDownloadPeriod": 6000,
+	// Minimal chunk download speed by default if not presents in m3u8 in bytes
+	"minDownloadSpeed": 14857.6,
+	// Multiplier of speed check
+	"speedCheckMultiplier": 0.3,
+	// 5 Mbit/sec
+	// How many simultaneous chunk downloads are available
+	"downloadSlotsAvailable": 2,
+	// How many simultaneous chunk download slots are available when a download speed is low
+	"maxDownloadSlotsAvailable": 4,
+	// Default text encoding
+	"encoding": "utf-8",
+	// Usually all sequences are sorted. So it should not impact
+	"forceSortChunks": false,
+	// For streams with variable quality - set your max speed in kilobits
+	// By default 200Mbit
+	"preferableBandwidth": 200000,
+	// timeout after a connection error before retry.
+	// Applied only for playlist and chunk download
+	// Increasing this value may have an impact on time of channel stopping
+	"delayBeforeRetryIfFailed": 1500,
+	// When a chunk sequence is broken then proxy can repeat the last correct chunk until a new sequential chunk will arrive (set a value to "repeat")
+	// When a chunk sequence is broken then proxy can repeat the last correct chunk until a new sequential chunk will arrive (set a value to "repeat")
+	// otherwise it will restart from a new correct chunk ("restart" value)
+	"brokenSequenceBehavior": "restart",
+	//"isStartStreamWhenContentIsStillNotAvailable": false,
+	"m3u8FileExtension": "m3u8",
+	// For mpeg-ts format: It is an extension part of the stream file in URL
+	// There is a lot of clients like Smart TV that do not support m3u8 in URL.
+	"mpegTsFileExtension": "mpeg",
+	// Segment file extension. Default: ts
+	"segmentFileExtension": "",
+	// Segment file content type. Default: from the source stream
+	"segmentFileContentType": "",
+	"isSegmentFileStatic": false,
+	"cdnServers": "",
+	"isReadChunksFromCacheDir": false,
+	"isAllowRangeHeader": true,
+	"extraPlaylistParams": "",
+	"isEmulateCatchupSourceOffsetThroughStart": false,
+	"isUseInternalLogos": true,
+	"isUseExternalLogos": true,
+	"isUseEpgLogos": true,
+	"isPassThroughNonHlsStreams": false,
+	"isEnableSequenceCheck": false,
+	"isBackupStreams": false,
+	"isDisableArchive": false,
+	"isSkipBitrateChoice": false,
+	"isXtreamCodesApiEnabled": false,
+	// Settings for SS-IPTV User interface
+	"SS-IPTV": {
+		"isEnabled": true,
+		"descriptionSize": "Medium", // Medium|Big
+		"tileSize": "Medium", // Small|Medium|Big
+		"backgroundColor": "#11609e", //"#046f55"
+		"isUseEpg": false
+	},
+	"LOG": {
+		"console": {
+			"isEnabled": true
+		},
+		"status": {
+			"isEnabled": true
+		},
+		"file": {
+			"isEnabled": false,
+			"filename": "logs/hls-proxy.log",
+			"maxLogSize": 500000,
+			"backups": 9,
+			"compress": true
+		},
+		"level": "info",
+		"linesInStatus": 150
+	},
+	// Cron schedule for playlist fetching intervals. By default every three hours
+	"Cron": {
+		"schedule": "0 0 */3 * * *",
+		"timezone": ""
+	},
+	// Available formats at https://momentjs.com/
+	// Used for output in /status page
+	"fullDateFormat": "HH:mm:ss, YYYY-MM-DD",
+	"timeFormat": "HH:mm:ss,",
+	"dateFormat": "YYYY-MM-DD",
+	"durationFormat": "D [days] HH:mm:ss",
+	"trimDuration": false,
+	"maxChunkCountOnStatusPage": 10,
+	"statusSortedBy": "startedAt",
+	// Channel group autorecognition
+	"grouping": {
+		// Enable group autorecognition
+		"isGroupDetectionEnabled": true,
+		// Autorecognizing will overwrite existing group for a channel
+		"isOverwriteExistingGroups": false,
+		// Find channel group name in groups.json and replace to the default value
+		"isGroupRename": false,
+		// if group is detected then #EXTGRP directive is added to m3u8 for specific stream
+		"isAddEXTGRP": true,
+		"languages": [
+			{
+				"id": "en",
+				"name": "English"
+			},
+			{
+				"id": "es",
+				"name": "Español"
+			},
+			{
+				"id": "ru",
+				"name": "Русский"
+			}
+		],
+		"preferredLanguage": "en"
+	},
+
+	"isSortPlaylist": false,
+	"sortPlaylistByGroup": "keep",
+
+	// Requests to outside made by server can add "Referrer" header when there is a match in this table
+	"referrer": {
+		"https://www.lyngsat-logo.com": "https://www.lyngsat-logo.com/",
+		"http://ttv.world": "http://ttv.world/",
+		"^https?://.*.peers.tv": "http://peers.tv",
+		"https://iptvx.one": "https://iptvx.one/"
+	},
+	"removeRefererHeader": false,
+	// Default value for clients without "isAdultAllowed" property
+	"isAdultAllowed": true,
+	// For Windows users. If true - hides a console window when minimized
+	"isMinimizeToTray": true,
+	"isStartMinimized": false,
+	"overwriteExtXVersion": "",
+	// CBilling.tv like multiroom generic support
+	// You need to buy anyway additional devices for multiroom feature. This pooler feature allows to cache them using proxy.
+	// You can't use more than three devices at the time - it is a provider's limit.
+	// Overuseage can block your account. Proxy doesn't count how many devices you bought.
+	"pooler": [
+		// Only one account at the moment
+		{
+			"name": "cbilling",
+			"isEnabled": true,
+			"regex": "^https?://(?:s[0-9][0-9]|no-ru)\\.wsbof\\.com[:0-9]*/s/([a-f0-9]+)(_[0-9])?/.*$",
+			"replace": "",
+			"pool": [
+				"$$",
+				"$$_2",
+				"$$_3"
+			]
+		},
+		// http://tv.gigi.iptv.uno:80/live/firstToken/secondToken/14702.m3u8
+		// No multiroom: One account - one stream
+		{
+			"name": "gigi.iptv",
+			"isEnabled": false,
+			"regex": "^https?://tv.gigi.iptv.uno(?::80)?/live/([a-zA-Z0-9]+/[a-zA-Z0-9]+)/.*$",
+			"replace": "",
+			"pool": [
+				"$$",
+				"firstToken2/secondToken2"
+			]
+		},
+		// http://DOMAIN/iptv/TOKEN/2329/index.m3u8
+		// Multiroom: One account - two connections
+		{
+			"name": "iedem.tv",
+			"isEnabled": false,
+			"regex": "^https?://([a-z0-9.]+)/iptv/([a-zA-Z0-9]+)/.*?/(?:index|video)\\.m3u8.*?$",
+			"replace": "",
+			"pool": [
+				"$$ $$",
+				"$$ $$",
+				"DOMAIN TOKEN",
+				"DOMAIN TOKEN"
+			]
+		},
+		// http://DOMAIN/9195/video.m3u8?username=USERNAME&password=PASSWORD&token=TOKEN&ch_id=70&req_host=pkjX3BL
+		// Multiroom: One account - three connections
+		{
+			"name": "glanz",
+			"isEnabled": false,
+			"regex": "^https?://([a-z0-9.]+)/\\d+/(?:index|video|archive)(?:-\\d+-\\d+)?\\.m3u8\\?username=([a-z0-9.]+)&password=([a-zA-Z0-9.]+)&token=([a-f0-9.]+)&ch_id=.*?$",
+			"replace": "",
+			"pool": [
+				"$$ $$ $$ $$",
+				"$$ $$ $$ $$",
+				"$$ $$ $$ $$",
+				"DOMAIN USERNAME PASSWORD TOKEN",
+				"DOMAIN USERNAME PASSWORD TOKEN",
+				"DOMAIN USERNAME PASSWORD TOKEN"
+			]
+		},
+		// http://domain.com/1101/index.m3u8?token=xxxxxxxx
+		// Optional multiroom: One account - 3 connections max
+		{
+			"name": "only4tv",
+			"isEnabled": false,
+			"regex": "^https?://([a-z0-9.]+)/\\d+/(?:index|video|archive)(?:-\\d+-\\d+)?\\.m3u8\\?token=(.*?)$",
+			"replace": "",
+			"pool": [
+				"$$ $$",
+				"$$ $$",
+				"$$ $$",
+				"DOMAIN TOKEN",
+				"DOMAIN TOKEN",
+				"DOMAIN TOKEN"
+			]
+		}
+	],
+	"region": [
+		{
+			"name": "cbilling",
+			"regex": "^http://(s[0-9][0-9])\\.iptvx\\.tv:8090/s/.*$",
+			"pool": [
+				["s01", "Germany"],
+				["s02", "Poland"],
+				["s03", "Czech Republic"],
+				["s04", "Sweden"],
+				["s05", "USA"],
+				["s06", "Russia"],
+				["s07", "Israel"]
+			],
+			"current": "s04"
+		}
+	],
+	"reserveStreams": {
+		"suffixes": [
+			" 4K",
+			" UHD",
+			" FHD",
+			" HD 50 orig",
+			" HD 50",
+			" HD orig",
+			" HD",
+			" orig"
+		],
+		"isStripSuffix": true
+	},
+	"ipv6": false,
+	"isStrictSSLEnabled": true,
+	"isAutoUpdate": true,
+	"updateChannel": "stable",
+	"isCollectNetworkStats": false,
+	"FFMPEG": {
+		"executable": "ffmpeg",
+//		MPEGTS input
+		"command": "-re -noaccurate_seek -reconnect 1 -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_on_network_error 1 -reconnect_on_http_error 1 -reconnect_delay_max 2000 -timeout 2000000000 -err_detect aggressive -fflags discardcorrupt -i \"${SOURCE}\" -sn -dn -c copy -f hls -hls_time 5 -hls_list_size 8 -hls_allow_cache 0 -hls_flags delete_segments -hide_banner -nostats -loglevel error -y -metadata service_name=\"${NAME}\" -user_agent \"${USERAGENT}\" -y ${M3U8FILE}",
+//		Try it if the first one doesn't work
+//		"command": "-re -noaccurate_seek -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_on_network_error 1 -reconnect_on_http_error 1 -reconnect_delay_max 3 -i \"${SOURCE}\" -sn -dn -c copy -f hls -hls_time 10 -hls_list_size 10 -hls_allow_cache 0 -hls_flags delete_segments -y -metadata service_name=\"${NAME}\" -user_agent \"${USERAGENT}\" -y ${M3U8FILE}",
+//		RTSP input
+//		"command": "-fflags nobuffer -rtsp_transport tcp -i \"${SOURCE}\" -codec copy -movflags frag_keyframe+empty_moov -an -f hls -hls_init_time 3 -hls_time 5 -hls_list_size 8 -hls_segment_filename s_%06d.ts -hls_allow_cache 0 -hls_flags delete_segments ${M3U8FILE}",
+		"workingDir": "./ffmpeg",
+		"timeout": 0,
+		"isEnabled": true
+	},
+	"DEBUG": {
+//        "saveM3U8": true,
+//        "savePlaylist": true,
+//        "saveTsChunks": true
+    }
+}

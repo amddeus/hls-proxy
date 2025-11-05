@@ -1,0 +1,281 @@
+{
+	"dictionary": [
+		{
+			"id": "films",
+			"en": "Movies",
+			"es": "Películas",
+			"ru": "Фильмы",
+			"custom": [
+				"Кино",
+				"Фильмовые",
+				"Кино и сериалы"
+			]
+		},
+		{
+			"id": "sport",
+			"en": "Sport",
+			"es": "Deportes",
+			"ru": "Спорт",
+			"custom": [
+				"Спортивные"
+			]
+		},
+		{
+			"id": "kids",
+			"en": "Kids",
+			"es": "Infantil",
+			"ru": "Детские",
+			"custom": [
+				"Мультфильмы",
+				"Детям и мамам"
+			]
+		},
+		{
+			"id": "knowledge",
+			"en": "Knowledge",
+			"es": "Conocimiento",
+			"ru": "Познавательные",
+			"custom": [
+				"Education",
+				"Lifestyle",
+				"Travel",
+				"Food",
+				"Образовательные",
+				"Кухня тв",
+				"Еда"
+			]
+		},
+		{
+			"id": "music",
+			"en": "Music",
+			"es": "Música",
+			"ru": "Музыка",
+			"custom": [
+				"Музыкальные"
+			]
+		},
+		{
+			"id": "entertainment",
+			"en": "Entertainment",
+			"es": "Entretenimiento",
+			"ru": "Развлекательные",
+			"custom": [
+				"Comedy",
+				"Family",
+				"Компьютерные игры",
+				"Семейные"
+			]
+		},
+		{
+			"id": "men",
+			"en": "Men's",
+			"es": "Masculino",
+			"ru": "Мужские",
+			"custom": [
+				"Auto"
+			]
+		},
+		{
+			"id": "news",
+			"en": "News",
+			"es": "Noticias",
+			"ru": "Новости",
+			"custom": [
+				"Weather",
+				"Business",
+				"Legislative",
+				"Новостные",
+				"Информационные"
+			]
+		},
+		{
+			"id": "common",
+			"en": "Common",
+			"es": "Comunes",
+			"ru": "Общие",
+			"custom": [
+				"General",
+				"Эфирные",
+				"Эфир",
+				"Центральные",
+				"Общественные",
+				"Федеральные",
+				"Эфирные HD",
+				"RUSSIA",
+				"Общероссийские"
+			]
+		},
+		{
+			"id": "ukraine",
+			"en": "Ukraine",
+			"es": "Ucrania",
+			"ru": "Украина",
+			"country": "ua",
+			"custom": [
+				"Украинские",
+				"Украина региoнальные",
+				"Українські"
+			]
+		},
+		{
+			"id": "regional",
+			"en": "Regional",
+			"es": "Regional",
+			"ru": "Региональные",
+			"custom": [
+				"Local"
+			]
+		},
+		{
+			"id": "radio",
+			"en": "Radio",
+			"es": "Radio",
+			"ru": "Радио",
+			"custom": []
+		},
+		{
+			"id": "shopping",
+			"en": "Shopping",
+			"es": "Compras",
+			"ru": "Покупки",
+			"custom": [
+				"Shop",
+				"Телемагазины"
+			]
+		},
+		{
+			"id": "ultra hd",
+			"en": "Ultra HD",
+			"es": "4K",
+			"ru": "4K",
+			"custom": [
+				"4K",
+				"UHD",
+				"Ultra HD",
+				"Ultra HD 4K"
+			]
+		},
+		{
+			"id": "israel",
+			"en": "Israel",
+			"es": "Israel",
+			"ru": "Израиль",
+			"country": "il",
+			"custom": [
+				"ישראל",
+				"ישראלי"
+			]
+		},
+		{
+			"id": "docu",
+			"en": "Docu",
+			"es": "Documental",
+			"ru": "Документальные",
+			"custom": [
+				"Documentary",
+				"History"
+			]
+		},
+		{
+			"id": "hobby",
+			"en": "Hobby",
+			"es": "Hobby",
+			"ru": "Хобби",
+			"custom": [
+				"Увлечения"
+			]
+		},
+		{
+			"id": "health",
+			"en": "Health",
+			"es": "Salud",
+			"ru": "Здоровье",
+			"custom": []
+		},
+		{
+			"id": "fashion",
+			"en": "Fashion",
+			"es": "Fashion",
+			"ru": "Мода",
+			"custom": [
+				"Fashion ТВ"
+			]
+		},
+		{
+			"id": "adult",
+			"en": "Adult",
+			"es": "Adulto",
+			"ru": "Взрослые",
+			"custom": [
+				"XXX: | For Adults Only",
+				"XXX",
+				"18+",
+				"Erotic",
+				"Erotics",
+				"XXX (18+)",
+				"XXX: | Solo para adultos",
+				"Эротика",
+				"Для взрослых",
+				"Клубничка",
+				"Порно",
+				"Эротические",
+				"18",
+				"Взрослые",
+				"Взрослые 18+",
+				"Для взрослых (18+)"
+			]
+		},
+		{
+			"id": "foreign",
+			"en": "Foreign",
+			"es": "Extranjero",
+			"ru": "Зарубежные",
+			"custom": [
+				"США",
+				"Австралия",
+				"Португалия",
+				"Европа",
+				"Азия",
+				"Таджикистан",
+				"Сербия",
+				"Молдова",
+				"Испания"
+			]
+		},
+		{
+			"id": "religious",
+			"en": "Religious",
+			"es": "Religioso",
+			"ru": "Религиозные",
+			"custom": [
+				"Religion",
+				"Religión",
+				"Религия"
+			]
+		},
+		{
+			"id": "notfound",
+			"en": "Not sorted",
+			"es": "Sin ordenar",
+			"ru": "Без категории",
+			"custom": [
+				"Другие",
+				"Другое",
+				"Разное",
+				"UNDEFINED",
+				"Для Android",
+				"Для ForkPlayer",
+				"Без группы"
+			]
+		}
+	],
+	"withoutGroup": "notfound",
+	"adultCategory": "adult",
+	"ignoreNames": [
+		"favorite",
+		"favorites",
+		"favorito",
+		"избранное"
+	],
+	"hideGroup": []
+}

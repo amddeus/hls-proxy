@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<playlist>
+    <title>Интернет ТВ</title>
+    <fon>http://reklama.vintera.tv/img/otkluchi.png</fon>
+    <trackList>
+        <track>
+            <title>France 24 (Eng)</title>
+            <location>
+                http://static.france24.com/live/F24_EN_HI_HLS/live_tv.m3u8
+            </location>
+            <image>http://img.vintera.tv/img/ico/FRANCE24.png</image>
+            <flag>http://img.vintera.tv/img/flag/fr.png</flag>
+            <desc></desc>
+        </track>
+        <track>
+            <title>Немецкая волна (Eng)</title>
+            <location>http://dwstream4-lh.akamaihd.net/i/dwstream4_live@131329/index_1_av-b.m3u8</location>
+            <image>http://img.vintera.tv/img/ico/dw.png</image>
+            <flag>http://img.vintera.tv/img/flag/de.png</flag>
+            <desc></desc>
+        </track>
+    </trackList>
+</playlist>
